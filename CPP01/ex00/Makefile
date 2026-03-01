@@ -3,11 +3,11 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = ./inc/
 
-SRCS = Contact.cpp main.cpp PhoneBook.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 OBJS = $(addprefix object_files/, $(SRCS:.cpp=.o))
 
-NAME = phone_book
+NAME = ex00
 
 all: $(NAME)
 
