@@ -5,6 +5,6 @@ int	main( void )
 	Zombie *zomb_arr = zombieHorde(5, "Arnold");
 	
 	for (int i = 0; i < 5; i++)
-		zomb_arr->announce();
+		zomb_arr[i].announce();
 	delete[] zomb_arr;
 }
