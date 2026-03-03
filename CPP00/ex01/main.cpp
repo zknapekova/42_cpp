@@ -28,7 +28,7 @@ int	main()
 			std::cerr << "Error: EOF inserted" << std::endl;
 			break;
 		}
-		if (std::cin.fail() || std::cin.bad())
+		if (std::cin.fail())
 		{
 			std::cin.clear();
 			continue;

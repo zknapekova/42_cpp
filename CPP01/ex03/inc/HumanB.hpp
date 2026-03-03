@@ -6,7 +6,7 @@
 class HumanB
 {
 	std::string name;
-	Weapon		*weapon;
+	Weapon		*weapon = NULL;
 	
 	public:
 		HumanB(std::string name_);
