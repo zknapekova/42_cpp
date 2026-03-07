@@ -7,19 +7,16 @@ Harl::Harl( void )
 void Harl::complain( std::string level )
 {
 	std::string lvl_arr[] = { "debug", "info", "warning", "error" };
-	void (Harl::*ptr)(void)[] = &Harl::debug;
+	void (Harl::*ptr[])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 	
-	if (level == "debug")
-		(this->*ptr)();
 	
-	/*for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
     {
         if (level == lvl_arr[i])
         {
-            (this->*funcs[i])();
+            (this->*ptr[i])();
         }
-    }*/
-
+    }
 
 }
 
@@ -37,7 +34,7 @@ void Harl::info( void )
 
 void Harl::warning( void )
 {
-	std::cout << "WARNING: Connection to DB failed. Trying second attempt." << std::endl;
+	std::cout << "WARNING: Connection to DB failed. Trying again." << std::endl;
 
 }
 
