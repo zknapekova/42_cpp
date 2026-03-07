@@ -7,7 +7,7 @@ Harl::Harl( void )
 void Harl::complain( std::string level )
 {
 	std::string lvl_arr[] = { "debug", "info", "warning", "error" };
-	void (Harl::*ptr)(void) = &Harl::debug;
+	void (Harl::*ptr)(void)[] = &Harl::debug;
 	
 	if (level == "debug")
 		(this->*ptr)();

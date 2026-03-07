@@ -1,7 +1,7 @@
 COMP = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-HEADERS = ./inc/
+HEADERS = Account.hpp
 
 SRCS = Account.cpp tests.cpp
 

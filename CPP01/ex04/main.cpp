@@ -56,7 +56,9 @@ int main(int argc, char *argv[])
 	while (std::getline(input, line))
     {
         if (!input.eof())
-        	line += '\n';
+		{
+        	line.append("\n");
+		}
         replace(s1, s2, line);
         output << line;
     }

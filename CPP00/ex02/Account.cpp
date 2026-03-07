@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/07 13:56:30 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/07 13:56:32 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
@@ -37,7 +49,7 @@ Account::~Account()
 	_nbAccounts--;
 	_totalAmount -= _amount;
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount << " closed" << std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
 int		Account::checkAmount( void ) const
@@ -113,7 +125,7 @@ void	Account::_displayTimestamp( void )
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-	std::cout << "accounts:" << _nbAccounts << ";amount:" << _totalAmount << ";deposits:" <<  _totalNbDeposits <<\
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" <<  _totalNbDeposits <<\
 ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
@@ -121,7 +133,7 @@ void	Account::displayStatus( void ) const
 {
 
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";total:" << _amount << ";deposits:" <<  _nbDeposits <<\
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" <<  _nbDeposits <<\
 ";withdrawals:" << _nbWithdrawals << std::endl;
 
 }

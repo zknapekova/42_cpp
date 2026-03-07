@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 15:57:15 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/02/22 18:17:10 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/07 13:54:01 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int PhoneBook::search_contact()
 		std::cout << "No contacts added" << std::endl;
 		return 1;
 	}
+	std::cout << "     Index|First name| Last name|  Nickname|" << std::endl;
 	for (size_t i = 0; i < _count; i++)
 	{
 		std::cout << "         " << i + 1 << '|';   
