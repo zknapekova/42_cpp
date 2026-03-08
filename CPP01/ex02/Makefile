@@ -13,6 +13,7 @@ $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) $(OBJS) -o $@
 
 object_files/%.o: %.cpp
+	@mkdir -p object_files
 	$(COMP) $(FLAGS) -c $^ -o $@
 
 # Clean object files

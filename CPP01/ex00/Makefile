@@ -15,6 +15,7 @@ $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) -I$(HEADERS) $(OBJS) -o $@
 
 object_files/%.o: %.cpp
+	@mkdir -p object_files
 	$(COMP) $(FLAGS) -I$(HEADERS) -c $^ -o $@
 
 # Clean object files

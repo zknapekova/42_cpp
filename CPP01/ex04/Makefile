@@ -15,6 +15,7 @@ $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) -I$(HEADERS) $(OBJS) -o $@
 
 object_files/%.o: %.cpp
+	@mkdir -p object_files
 	$(COMP) $(FLAGS) -I$(HEADERS) -c $^ -o $@
 
 # Clean object files
@@ -50,6 +51,9 @@ test: $(NAME)
 	./$(NAME) input_test 'Line' ''
 	@echo "After test:\n"
 	@cat input_test.replace
+
+	@rm input_test
+	@rm input_test.replace
 	
 	
 
