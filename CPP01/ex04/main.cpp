@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 15:09:51 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/08 15:09:51 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/08 16:39:31 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	replace(std::string &s1, std::string &s2, std::string &content)
     	ind = content.find(s1, ind + s2.size());
 	}
 }
-
-
 
 int main(int argc, char *argv[])
 {

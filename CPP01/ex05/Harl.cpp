@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 15:10:01 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/08 15:10:01 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/08 16:40:59 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void Harl::complain( std::string level )
 {
 	std::string lvl_arr[] = { "debug", "info", "warning", "error" };
 	void (Harl::*ptr[])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
-	
 	
 	for (int i = 0; i < 4; i++)
     {

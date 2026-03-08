@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 15:07:26 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/08 15:07:26 by zuknapek         ###   ########.fr       */
+/*   Created: 2026/03/08 16:08:35 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/08 16:10:20 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	randomChump( std::string name)
 {
-	Zombie *new_zombie = newZombie(name);
-	new_zombie->announce();
-	
-	delete new_zombie;
+	Zombie zombie(name);
+	zombie.announce();
 }

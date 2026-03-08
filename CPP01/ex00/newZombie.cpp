@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 15:07:20 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/08 15:07:20 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/08 16:12:56 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Zombie* newZombie( std::string name)
 {
-	return new(std::nothrow) Zombie(name);
+	Zombie *zombie = new(std::nothrow) Zombie(name);
+	return (zombie);
 }
 
