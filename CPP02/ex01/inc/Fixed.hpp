@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <climits>
+#include <cmath>
 
 class Fixed
 {
@@ -14,9 +15,14 @@ class Fixed
 	public:
 		Fixed( void );
 		Fixed( const int value );
+		Fixed( const float value );
 		Fixed(const Fixed& f);
 		Fixed& operator=(const Fixed& orig);
 		~Fixed( void );
+		
+		float	toFloat( void ) const;
+		
+		
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 

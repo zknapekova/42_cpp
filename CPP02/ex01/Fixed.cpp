@@ -16,9 +16,23 @@ Fixed::Fixed( const int value )
 	}
 	else
 		_fp_value = value << _fract_bits;
+}
+
+Fixed::Fixed( const float value )
+{
+	std::cout << "Float constructor called" << std::endl;
 	
+	if (value > _max_int_value || value < _min_int_value)
+	{
+		std::cerr << "ERROR: Value is too large\n";
+		_fp_value = 0;
+	}
+	else
+		_fp_value = roundf(value * (1 << _fract_bits));
+		
 	std::cout << _fp_value << std::endl;
 }
+
 
 Fixed::Fixed(const Fixed &f)
 {
@@ -26,7 +40,7 @@ Fixed::Fixed(const Fixed &f)
 	*this = f;
 }
 
-Fixed& Fixed::operator=(const Fixed &orig)
+Fixed& Fixed::operator=( const Fixed &orig )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	_fp_value = orig.getRawBits();
@@ -37,6 +51,12 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
+
+float	Fixed::toFloat( void ) const
+{
+	return static_cast<float>(_fp_value)/(1 << _fract_bits);
+}
+
 
 int		Fixed::getRawBits( void ) const
 {
