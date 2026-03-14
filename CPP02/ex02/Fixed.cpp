@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 14:40:28 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/14 14:40:28 by zuknapek         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Fixed.hpp"
 
 Fixed::Fixed():_fp_value(0)
@@ -45,18 +33,10 @@ Fixed::Fixed( const float value )
 	std::cout << _fp_value << std::endl;
 }
 
-
 Fixed::Fixed(const Fixed &f)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = f;
-}
-
-Fixed& Fixed::operator=( const Fixed &orig )
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	_fp_value = orig.getRawBits();
-	return *this;
 }
 
 Fixed::~Fixed()
@@ -86,9 +66,57 @@ void	Fixed::setRawBits( int const raw )
 	_fp_value = raw;
 }
 
+Fixed& Fixed::operator=( const Fixed &orig )
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	_fp_value = orig.getRawBits();
+	return *this;
+}
+
 std::ostream& operator<<( std::ostream& outs, const Fixed& fixed )
 {
   outs << fixed.toFloat();
   return outs;
 }
+
+//adding two Fixed objects
+Fixed Fixed::operator+( const Fixed& right )
+{
+	Fixed res;
+	res.setRawBits(_fp_value + right.getRawBits());
+
+	return res;
+}
+
+//detracting two Fixed objects
+Fixed Fixed::operator-( const Fixed& right )
+{
+	Fixed res;
+	res.setRawBits(_fp_value - right.getRawBits());
+
+	return res;
+}
+
+//multiplying two Fixed objects
+Fixed Fixed::operator*( const Fixed& right )
+{
+	Fixed res;
+	if (_fp_value * right.getRawBits() > INT_MAX || \
+	_fp_value * right.getRawBits() < INT_MIN)
+		res.setRawBits(0);
+	else
+		res.setRawBits(_fp_value * right.getRawBits());
+
+	return res;
+}
+
+//dividing two Fixed objects
+Fixed Fixed::operator/( const Fixed& right )
+{
+	Fixed res;
+	
+	res.setRawBits(_fp_value / right.getRawBits());
+	return res;
+}
+
 
