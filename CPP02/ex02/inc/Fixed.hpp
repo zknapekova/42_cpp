@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/15 14:40:06 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/15 15:39:47 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
@@ -26,24 +38,79 @@ class Fixed
 		void	setRawBits( int const raw );
 
 		Fixed& operator=( const Fixed& orig );
+		
 		Fixed operator+( const Fixed& right ) const;
 		Fixed operator+( const int v ) const;
 		Fixed operator+( const float v ) const;
+		
 		Fixed operator-( const Fixed& right ) const;
 		Fixed operator-( const int v ) const;
 		Fixed operator-( const float v ) const;
+		
 		Fixed operator*( const Fixed& right ) const;
 		Fixed operator*( const int v ) const;
 		Fixed operator*( const float v ) const;
+		
 		Fixed operator/( const Fixed& right ) const;
+		Fixed operator/( const int v ) const;
+		Fixed operator/( const float v ) const;
+
+		bool operator>( const Fixed& right ) const;
+		bool operator>( const int right ) const;
+		bool operator>( const float right ) const;
+		
+		bool operator<( const Fixed& right ) const;
+		bool operator<( const int right ) const;
+		bool operator<( const float right ) const;
+		
+		bool operator>=( const Fixed& right ) const;
+		bool operator>=( const int right ) const;
+		bool operator>=( const float right ) const;
+		
+		bool operator<=( const Fixed& right ) const;
+		bool operator<=( const int right ) const;
+		bool operator<=( const float right ) const;
+		
+		bool operator==( const Fixed& right ) const;
+		bool operator==( const int right ) const;
+		bool operator==( const float right ) const;
+		
+		bool operator!=( const Fixed& right ) const;
+		bool operator!=( const int right ) const;
+		bool operator!=( const float right ) const;
 
 };
 
 std::ostream& operator<<( std::ostream& outs, const Fixed& fixed );
+
 Fixed operator+( const int v, const Fixed &right );
 Fixed operator+( const float v, const Fixed &right );
+
 Fixed operator*( const int v, const Fixed &righ );
 Fixed operator*( const float v, const Fixed &right );
 
+Fixed operator-( const int v, const Fixed &right );
+Fixed operator-( const float v, const Fixed &right );
+
+Fixed operator/( const int v, const Fixed &divisor );
+Fixed operator/( const float v, const Fixed &divisor );
+
+bool operator>( const int v, const Fixed &right );
+bool operator>( const float v, const Fixed &right );
+
+bool operator<( const int v, const Fixed &right );
+bool operator<( const float v, const Fixed &right );
+
+bool operator>=( const int v, const Fixed &right );
+bool operator>=( const float v, const Fixed &right );
+
+bool operator<=( const int v, const Fixed &right );
+bool operator<=( const float v, const Fixed &right );
+
+bool operator==( const int v, const Fixed &right );
+bool operator==( const float v, const Fixed &right );
+
+bool operator!=( const int v, const Fixed &right );
+bool operator!=( const float v, const Fixed &right );
 
 #endif

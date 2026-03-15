@@ -1,5 +1,16 @@
-#include "Fixed.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/15 14:40:12 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/15 15:36:44 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Fixed.hpp"
 
 Fixed::Fixed():_fp_value(0)
 {
@@ -30,8 +41,6 @@ Fixed::Fixed( const float value )
 	}
 	else
 		_fp_value = roundf(value * (1 << _fract_bits));
-		
-	std::cout << _fp_value << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f)
@@ -139,7 +148,6 @@ Fixed Fixed::operator-( const Fixed& right ) const
 Fixed Fixed::operator-( const int v ) const
 {
 	Fixed	right = Fixed(v);
-
 	return *this - right;
 }
 
@@ -147,10 +155,20 @@ Fixed Fixed::operator-( const int v ) const
 Fixed Fixed::operator-( const float v ) const
 {
 	Fixed	right = Fixed(v);
-
 	return *this - right;
 }
 
+Fixed operator-( const int v, const Fixed &right )
+{
+	Fixed	left = Fixed(v);
+	return left - right;
+}
+
+Fixed operator-( const float v, const Fixed &right )
+{
+	Fixed	left = Fixed(v);	
+	return left - right;
+}
 
 //overload of the * operator to multiply two Fixed objects
 Fixed Fixed::operator*( const Fixed& right ) const
@@ -175,8 +193,6 @@ Fixed Fixed::operator*( const Fixed& right ) const
 Fixed Fixed::operator*( const int v ) const
 {
 	Fixed right = Fixed(v);
-	
-
 	return *this * right;
 }
 
@@ -185,8 +201,6 @@ Fixed Fixed::operator*( const int v ) const
 Fixed Fixed::operator*( const float v ) const
 {
 	Fixed right = Fixed(v);
-	
-
 	return *this * right;
 }
 
@@ -205,6 +219,10 @@ Fixed Fixed::operator/( const Fixed& right ) const
 {
 	Fixed res;
 	long long int fp;
+	int	raw = right.getRawBits();
+
+	if (raw == 0)
+		res.setRawBits(0);
 	
 	fp = (static_cast<long long>(_fp_value) << _fract_bits) / right.getRawBits();
 	if (fp > INT_MAX || fp < INT_MIN)
@@ -218,6 +236,182 @@ Fixed Fixed::operator/( const Fixed& right ) const
 	return res;
 }
 
+//overload of the / operator to divide Fixed object by int
+Fixed Fixed::operator/( const int v ) const
+{
+	Fixed divisor = Fixed(v);
+	return *this / divisor;
+}
+
+//overload of the / operator to divide Fixed object by float
+Fixed Fixed::operator/( const float v ) const
+{
+	Fixed divisor = Fixed(v);
+	return *this / divisor;
+}
+
+Fixed operator/( const int v, const Fixed &divisor )
+{
+	Fixed dividend = Fixed(v);
+	return dividend / divisor;
+}
+
+Fixed operator/( const float v, const Fixed &divisor )
+{
+	Fixed dividend = Fixed(v);
+	return dividend / divisor;
+}
+
+//overload of the > operator to compare two Fixed objects
+bool Fixed::operator>( const Fixed& right ) const
+{
+	return this->getRawBits() > right.getRawBits();
+}
+
+bool Fixed::operator>( const int right ) const
+{
+	return this->toInt() > right;
+}
+
+bool Fixed::operator>( const float right ) const
+{
+	return this->toFloat() > right;
+}
+
+bool operator>( const int v, const Fixed &right )
+{
+	return right <= v;
+}
+
+bool operator>( const float v, const Fixed &right )
+{
+	return right <= v;
+}
 
 
+bool Fixed::operator<( const Fixed& right ) const
+{
+	return this->getRawBits() < right.getRawBits();
+}
 
+bool Fixed::operator<( const int right ) const
+{
+	return this->toInt() < right;
+}
+
+bool Fixed::operator<( const float right ) const
+{
+	return this->toFloat() < right;
+}
+
+bool operator<( const int v, const Fixed &right )
+{
+	return right >= v;
+}
+
+bool operator<( const float v, const Fixed &right )
+{
+	return right >= v;
+}
+
+bool Fixed::operator>=( const Fixed& right ) const
+{
+	return this->getRawBits() >= right.getRawBits();
+}
+
+bool Fixed::operator>=( const int right ) const
+{
+	return this->toInt() >= right;
+}
+
+bool Fixed::operator>=( const float right ) const
+{
+	return this->toFloat() >= right;
+}
+
+bool operator>=( const int v, const Fixed &right )
+{
+	return right < v;
+}
+
+bool operator>=( const float v, const Fixed &right )
+{
+	return right < v;
+}
+
+bool Fixed::operator<=( const Fixed& right ) const
+{
+	return this->getRawBits() <= right.getRawBits();
+}
+
+bool Fixed::operator<=( const int right ) const
+{
+	return this->toInt() <= right;
+}
+
+bool Fixed::operator<=( const float right ) const
+{
+	return this->toFloat() <= right;
+}
+
+bool operator<=( const int v, const Fixed &right )
+{
+	return right > v;
+}
+
+bool operator<=( const float v, const Fixed &right )
+{
+	return right > v;
+}
+
+//overload of the == operator to compare two Fixed objects
+bool Fixed::operator==( const Fixed& right ) const
+{
+	return this->getRawBits() == right.getRawBits();
+}
+
+bool Fixed::operator==( const int right ) const
+{
+	return this->toInt() == right;
+}
+
+bool Fixed::operator==( const float right ) const
+{
+	return this->toFloat() == right;
+}
+
+bool operator==( const int v, const Fixed &right )
+{
+	return right == v;
+}
+
+bool operator==( const float v, const Fixed &right )
+{
+	return right == v;
+}
+
+//overload of the != operator to compare two Fixed objects
+bool Fixed::operator!=( const Fixed& right ) const
+{
+	return this->getRawBits() != right.getRawBits();
+}
+
+bool Fixed::operator!=( const int right ) const
+{
+	return this->toInt() != right;
+}
+
+bool Fixed::operator!=( const float right ) const
+{
+	return this->toFloat() != right;
+}
+
+bool operator!=( const int v, const Fixed &right )
+{
+	return right != v;
+}
+
+bool operator!=( const float v, const Fixed &right )
+{
+	return right != v;
+}
