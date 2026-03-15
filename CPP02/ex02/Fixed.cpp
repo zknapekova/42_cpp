@@ -1,5 +1,6 @@
 #include "Fixed.hpp"
 
+
 Fixed::Fixed():_fp_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -73,23 +74,60 @@ Fixed& Fixed::operator=( const Fixed &orig )
 	return *this;
 }
 
+//insert operator overload
 std::ostream& operator<<( std::ostream& outs, const Fixed& fixed )
 {
   outs << fixed.toFloat();
   return outs;
 }
 
-//adding two Fixed objects
-Fixed Fixed::operator+( const Fixed& right )
+//overload of the + operator for adding two Fixed objects
+Fixed Fixed::operator+( const Fixed& right ) const
 {
 	Fixed res;
-	res.setRawBits(_fp_value + right.getRawBits());
+	long long fp;
+	
+	fp = static_cast<long long>(_fp_value) + right.getRawBits();
+	if (fp > INT_MAX || fp < INT_MIN)
+	{
+		std::cerr << "ERROR: Integer overflow\n" << std::endl;
+		res.setRawBits(0);
+	}
+	else
+		res.setRawBits(fp);
 
 	return res;
 }
 
-//detracting two Fixed objects
-Fixed Fixed::operator-( const Fixed& right )
+//overload of the + operator for adding Fixed object and int
+Fixed Fixed::operator+( const int v ) const
+{
+	Fixed	right = Fixed(v);
+
+	return *this + right;
+}
+
+//overload of the + operator for adding Fixed object and float
+Fixed Fixed::operator+( const float v ) const
+{
+	Fixed	right = Fixed(v);
+
+	return *this + right;
+}
+
+Fixed operator+( const int v, const Fixed &right )
+{
+	return right.operator+(v);
+}
+
+Fixed operator+( const float v, const Fixed &right )
+{
+	return right.operator+(v);
+}
+
+
+//overload of the - operator for subtracting two Fixed object
+Fixed Fixed::operator-( const Fixed& right ) const
 {
 	Fixed res;
 	res.setRawBits(_fp_value - right.getRawBits());
@@ -97,26 +135,89 @@ Fixed Fixed::operator-( const Fixed& right )
 	return res;
 }
 
-//multiplying two Fixed objects
-Fixed Fixed::operator*( const Fixed& right )
+//overload of the - operator for subtracting two Fixed objects
+Fixed Fixed::operator-( const int v ) const
 {
-	Fixed res;
-	if (_fp_value * right.getRawBits() > INT_MAX || \
-	_fp_value * right.getRawBits() < INT_MIN)
-		res.setRawBits(0);
-	else
-		res.setRawBits(_fp_value * right.getRawBits());
+	Fixed	right = Fixed(v);
 
-	return res;
+	return *this - right;
 }
 
-//dividing two Fixed objects
-Fixed Fixed::operator/( const Fixed& right )
+//overload of the - operator to subtract a float from a Fixed object
+Fixed Fixed::operator-( const float v ) const
+{
+	Fixed	right = Fixed(v);
+
+	return *this - right;
+}
+
+
+//overload of the * operator to multiply two Fixed objects
+Fixed Fixed::operator*( const Fixed& right ) const
 {
 	Fixed res;
+	long long int fp;
 	
-	res.setRawBits(_fp_value / right.getRawBits());
+	fp = (static_cast<long long>(_fp_value) * right.getRawBits()) >> _fract_bits;
+	if (fp > INT_MAX || fp < INT_MIN)
+	{
+		std::cerr << "ERROR: Integer overflow\n" << std::endl;
+		res.setRawBits(0);
+	}
+	else
+		res.setRawBits(fp);
+
 	return res;
 }
+
+
+//overload of the * operator to multiply Fixed object by int
+Fixed Fixed::operator*( const int v ) const
+{
+	Fixed right = Fixed(v);
+	
+
+	return *this * right;
+}
+
+
+//overload of the * operator to multiply Fixed object by float
+Fixed Fixed::operator*( const float v ) const
+{
+	Fixed right = Fixed(v);
+	
+
+	return *this * right;
+}
+
+Fixed operator*( const int v, const Fixed &right )
+{
+	return right.operator*(v);
+}
+
+Fixed operator*( const float v, const Fixed &right )
+{
+	return right.operator*(v);
+}
+
+//overload of the / operator to divide two Fixed objects
+Fixed Fixed::operator/( const Fixed& right ) const
+{
+	Fixed res;
+	long long int fp;
+	
+	fp = (static_cast<long long>(_fp_value) << _fract_bits) / right.getRawBits();
+	if (fp > INT_MAX || fp < INT_MIN)
+	{
+		std::cerr << "ERROR: Integer overflow\n" << std::endl;
+		res.setRawBits(0);
+	}
+	else
+		res.setRawBits(fp);
+	
+	return res;
+}
+
+
 
 

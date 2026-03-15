@@ -26,13 +26,24 @@ class Fixed
 		void	setRawBits( int const raw );
 
 		Fixed& operator=( const Fixed& orig );
-		Fixed operator+( const Fixed& right );
-		Fixed operator-( const Fixed& right );
-		Fixed operator*( const Fixed& right );
+		Fixed operator+( const Fixed& right ) const;
+		Fixed operator+( const int v ) const;
+		Fixed operator+( const float v ) const;
+		Fixed operator-( const Fixed& right ) const;
+		Fixed operator-( const int v ) const;
+		Fixed operator-( const float v ) const;
+		Fixed operator*( const Fixed& right ) const;
+		Fixed operator*( const int v ) const;
+		Fixed operator*( const float v ) const;
+		Fixed operator/( const Fixed& right ) const;
 
 };
 
 std::ostream& operator<<( std::ostream& outs, const Fixed& fixed );
+Fixed operator+( const int v, const Fixed &right );
+Fixed operator+( const float v, const Fixed &right );
+Fixed operator*( const int v, const Fixed &righ );
+Fixed operator*( const float v, const Fixed &right );
 
 
 #endif
