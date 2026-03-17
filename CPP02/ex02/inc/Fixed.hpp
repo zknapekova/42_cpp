@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 14:40:06 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/15 15:39:47 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:14:00 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ class Fixed
 		bool operator!=( const Fixed& right ) const;
 		bool operator!=( const int right ) const;
 		bool operator!=( const float right ) const;
+		
+		Fixed& 	operator++( void );
+		Fixed 	operator++( int );
+		Fixed&	operator--( void );
+		Fixed	operator--( int );
+		
+		static Fixed& min(Fixed &fp1, Fixed &fp2);
+		static Fixed& max(Fixed &fp1, Fixed &fp2);
+		static const Fixed& min(const Fixed &fp1, const Fixed &fp2);
+		static const Fixed& max(const Fixed &fp1, const Fixed &fp2);
 
 };
 

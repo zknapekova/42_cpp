@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 14:40:12 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/15 15:36:44 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:49:00 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ Fixed Fixed::operator+( const Fixed& right ) const
 		res.setRawBits(0);
 	}
 	else
-		res.setRawBits(fp);
+		res.setRawBits((_fp_value) + right.getRawBits());
 
 	return res;
 }
@@ -144,7 +144,16 @@ Fixed operator+( const float v, const Fixed &right )
 Fixed Fixed::operator-( const Fixed& right ) const
 {
 	Fixed res;
-	res.setRawBits(_fp_value - right.getRawBits());
+	long long int fp;
+	
+	fp = (static_cast<long long>(_fp_value)- right.getRawBits());
+	if (fp < INT_MIN || fp > INT_MAX)
+	{
+		std::cerr << "ERROR: Integer overflow\n";
+		res.setRawBits(0);
+	}
+	else
+		res.setRawBits(_fp_value - right.getRawBits());
 
 	return res;
 }
@@ -188,7 +197,7 @@ Fixed Fixed::operator*( const Fixed& right ) const
 		res.setRawBits(0);
 	}
 	else
-		res.setRawBits(fp);
+		res.setRawBits((_fp_value * right.getRawBits()) >> _fract_bits);
 
 	return res;
 }
@@ -227,8 +236,11 @@ Fixed Fixed::operator/( const Fixed& right ) const
 	int	raw = right.getRawBits();
 
 	if (raw == 0)
+	{
 		res.setRawBits(0);
-	
+		return res;
+	}
+
 	fp = (static_cast<long long>(_fp_value) << _fract_bits) / right.getRawBits();
 	if (fp > INT_MAX || fp < INT_MIN)
 	{
@@ -236,7 +248,7 @@ Fixed Fixed::operator/( const Fixed& right ) const
 		res.setRawBits(0);
 	}
 	else
-		res.setRawBits(fp);
+		res.setRawBits((_fp_value << _fract_bits) / right.getRawBits());
 	
 	return res;
 }
@@ -420,3 +432,52 @@ bool operator!=( const float v, const Fixed &right )
 {
 	return right != v;
 }
+
+Fixed&	Fixed::operator++( void )
+{
+	++this->_fp_value;
+	return *this;
+}
+
+Fixed	Fixed::operator++( int )
+{
+	Fixed	res (*this);	
+	++this->_fp_value;
+	return res;
+}
+
+Fixed&	Fixed::operator--( void )
+{
+	--this->_fp_value;
+	return *this;
+}
+
+Fixed	Fixed::operator--( int )
+{
+	Fixed	res (*this);
+		
+	--this->_fp_value;
+	return res;
+}
+
+Fixed& Fixed::min(Fixed &fp1, Fixed &fp2)
+{
+	return (fp1 < fp2) ? fp1 : fp2;
+
+}
+
+Fixed& Fixed::max(Fixed &fp1, Fixed &fp2)
+{
+	return (fp1 > fp2) ? fp1 : fp2;
+}
+
+const Fixed& Fixed::min(const Fixed &fp1, const Fixed &fp2)
+{
+	return fp1 < fp2 ? fp1 : fp2;
+}
+
+const Fixed& Fixed::max(const Fixed &fp1, const Fixed &fp2)
+{
+	return (fp1 > fp2) ? fp1 : fp2;
+}
+

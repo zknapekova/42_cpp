@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 14:40:30 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/15 15:40:14 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/17 16:53:07 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main( void ) {
 	test(fix_f + Fixed(20), 40.5f, "Addition of two Fixed objects");
 	test(fix_f + f, 23.0f, "Addition of a Fixed object and float");
 	test(fix_i + i, 40.0f, "Addition of a Fixed object and int");
-	test(i + fix_i, 40.0f, "Addition of an int and Fixed object");
+	test(INT_MAX + fix_i, fix_i.toFloat(), "Addition of an INT_MAX and Fixed object");
 	test(f + fix_i, 32.5f, "Addition of a float and Fixed object");
 
 	//subtraction
@@ -53,7 +53,7 @@ int main( void ) {
 	test(fix_f - Fixed(20), 0.5f, "Subtraction of two Fixed objects");
 	test(fix_f - f, 18.0f, "Subtraction of a float from a Fixed object");
 	test(fix_i - i, 20.0f, "Subtraction of an int from a Fixed object");
-	test(i - fix_i, -20.0f, "Subtraction of a Fixed object from an int");
+	test(INT_MIN - fix_i, -fix_i.toFloat(), "Subtraction of a Fixed object from an INT_MIN");
 	test(f - fix_i, -27.5f, "Subtraction of a Fixed object from a float");
 
 
@@ -73,9 +73,7 @@ int main( void ) {
 	test(fix_i / 2.5f, 12.0f, "Division of a Fixed object by a float");
 	test(60 / fix_i, 2.0f, "Division of an int by a Fixed object");
 	test(92.25f / fix_f, 4.5f, "Division of a float by a Fixed object");
-
-	//r = 92.25f / 0;
-	//std::cout << "## expected: 0, got: " << r << std::endl;
+	test(fix_i / 0, 0.0f, "Division of a Fixed object by 0");
 
 	//Comparison
 	test_comp(fix_i > fix_f, true, "Testing >: comparing two Fixed objects");
@@ -120,12 +118,23 @@ int main( void ) {
 	test_comp(0 != fix_i, true, "Testing !=: comparing int with a Fixed object");
 	test_comp(12.5f != fix_f, true, "Testing !=: comparing float with a Fixed object");
 
-	//Increment and decrement operators
-	/*test(++fix_i, 30.0f + (1 << 8), "Testing pre-increment operator on a Fixed object");
-	test(fix_i++, 30.0f + (1 << 8), "Testing post-increment operator on a Fixed object");
-	test(fix_i--, 30.0f + 2*(1 << 8), "Testing post-increment operator on a Fixed object");
-	test(--fix_i, 30.0f, "Testing post-increment operator on a Fixed object");*/
 
+	//Increment and decrement operators
+	Fixed fix_i_cp = fix_i;
+	test_comp(++fix_i_cp > fix_i, true, "Testing pre-increment operator on a Fixed object");
+	
+	fix_i_cp = fix_i;
+	test_comp(fix_i_cp++ == fix_i, true, "Testing post-increment operator on a Fixed object");
+	
+	fix_i_cp = fix_i;
+	test_comp(fix_i_cp-- == fix_i, true, "Testing post-decrement operator on a Fixed object");
+	
+	fix_i_cp = fix_i;
+	test_comp(--fix_i_cp < fix_i, true, "Testing pre-increment operator on a Fixed object");
+	
+	//min, max
+	test(Fixed::min(fix_i, fix_f), fix_f.toFloat(), "Testing min function");
+	test(Fixed::max(fix_i, fix_f), fix_i.toFloat(), "Testing max function");
 
 	return 0;
 }
