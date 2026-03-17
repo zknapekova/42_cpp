@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 14:40:12 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/15 17:20:32 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/17 17:02:19 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ Fixed::Fixed(const Fixed &f):
 {
 	//std::cout << "Copy constructor called" << std::endl;
 }
-
 
 Fixed::~Fixed()
 {
@@ -237,8 +236,11 @@ Fixed Fixed::operator/( const Fixed& right ) const
 	int	raw = right.getRawBits();
 
 	if (raw == 0)
+	{
 		res.setRawBits(0);
-	
+		return res;
+	}
+
 	fp = (static_cast<long long>(_fp_value) << _fract_bits) / right.getRawBits();
 	if (fp > INT_MAX || fp < INT_MIN)
 	{
