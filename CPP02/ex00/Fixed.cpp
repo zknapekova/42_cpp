@@ -17,10 +17,10 @@ Fixed::Fixed():_value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &f)
+Fixed::Fixed(const Fixed &f):
+	_value(f._value)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = f;
 }
 
 Fixed& Fixed::operator=(const Fixed &orig)

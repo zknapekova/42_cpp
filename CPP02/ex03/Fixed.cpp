@@ -34,7 +34,8 @@ Fixed::Fixed( const float value )
 {
 	//std::cout << "Float constructor called" << std::endl;
 	
-	if (value > _max_int_value || value < _min_int_value)
+	if (value > static_cast<float>(_max_int_value) || \
+value < static_cast<float>(_min_int_value))
 	{
 		std::cerr << "ERROR: Value is too large\n";
 		_fp_value = 0;
@@ -43,11 +44,12 @@ Fixed::Fixed( const float value )
 		_fp_value = roundf(value * (1 << _fract_bits));
 }
 
-Fixed::Fixed(const Fixed &f)
+Fixed::Fixed(const Fixed &f):
+	_fp_value(f._fp_value)
 {
 	//std::cout << "Copy constructor called" << std::endl;
-	*this = f;
 }
+
 
 Fixed::~Fixed()
 {
@@ -61,7 +63,11 @@ float	Fixed::toFloat( void ) const
 
 int	Fixed::toInt( void ) const
 {
-	return (_fp_value >> _fract_bits);
+	int res = _fp_value >> _fract_bits;
+	
+	if (_fp_value < 0 && _fp_value != (res << _fract_bits))
+		res++;
+	return res;
 }
 
 int	Fixed::getRawBits( void ) const

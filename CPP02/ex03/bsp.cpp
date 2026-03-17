@@ -35,7 +35,5 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	
 	if (cp_ab.toInt() == 0 || cp_ca.toInt() == 0 || cp_bc.toInt() == 0)
 		return false;
-	if (is_positive(cp_ab) == is_positive(cp_ca) && is_positive(cp_ca) == is_positive(cp_bc))
-		return true;
-	return false;	
+	return is_positive(cp_ab) == is_positive(cp_ca) && is_positive(cp_ca) == is_positive(cp_bc);	
 }
