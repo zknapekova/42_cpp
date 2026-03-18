@@ -21,10 +21,11 @@ class ClapTrap
 	static const int	default_energy_points = 10;
 	static const int	default_attack_damage = 0;
 	
-	std::string		_name;
-	unsigned int	_hit_points;
-	unsigned int	_energy_points;
-	unsigned int	_attack_damage;
+	protected:
+		std::string		_name;
+		unsigned int	_hit_points;
+		unsigned int	_energy_points;
+		unsigned int	_attack_damage;
 	
 	public:
 		ClapTrap( void);

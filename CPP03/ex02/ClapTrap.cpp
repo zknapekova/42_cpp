@@ -18,7 +18,7 @@ ClapTrap::ClapTrap():
 	_energy_points(default_energy_points),
 	_attack_damage(default_attack_damage)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ): 
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap( std::string name ):
 	_energy_points(default_energy_points),
 	_attack_damage(default_attack_damage)
 {
-	std::cout << "Parametrized constructor called" << std::endl;
+	std::cout << "ClapTrap parametrized constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap& orig): 
@@ -36,13 +36,13 @@ ClapTrap::ClapTrap( const ClapTrap& orig):
 	_energy_points(orig._energy_points),
 	_attack_damage(orig._attack_damage)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &orig)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	
 	_name = orig._name;
 	_hit_points = orig._hit_points;
@@ -54,7 +54,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &orig)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 
@@ -88,7 +88,6 @@ std::ostream& operator<<( std::ostream& outs, const ClapTrap& ct )
 
 void	ClapTrap::attack(const std::string& target)
 {
-	
 	if ( _energy_points > 0 )
 	{
 		_energy_points--;
@@ -103,7 +102,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if ( _hit_points >= amount )
 	{
-		std::cout << "ClapTrap " << _name << " took damage and lost " << amount << " hit points\n";
+		std::cout << _name << " took damage and lost " << amount << " hit points\n";
 		_hit_points -= amount;
 	}
 	else
@@ -116,7 +115,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		_hit_points += amount;
 		_energy_points--;
-		std::cout << "ClapTrap " << _name << " repaired and regained " << amount << " hit points\n";
+		std::cout << _name << " repaired and regained " << amount << " hit points\n";
 	}
 	else
 		std::cerr << "Cannot repair. Number of energy points is too low\n";

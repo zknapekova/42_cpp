@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 
 int main( void ) 
 {
-	ClapTrap a;
-	ClapTrap b (ClapTrap("Beta"));
+	ScavTrap a;
+	ScavTrap b = ScavTrap("Beta");
 	
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
@@ -24,14 +24,15 @@ int main( void )
 	b.attack("Beta");
 	b.takeDamage(5);
 	b.beRepaired(2);
+	b.guardGate();
 	std::cout << b << std::endl;
+	b.takeDamage(50);
 	
 	a = b;
 	std::cout << b << std::endl;
 	
-	ClapTrap c (a);
+	ScavTrap c (a);
 	std::cout << c << std::endl;
-	b.takeDamage(50);
 	
 	return 0;
 }

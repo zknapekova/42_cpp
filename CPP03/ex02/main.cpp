@@ -10,28 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
 
 int main( void ) 
 {
-	ClapTrap a;
-	ClapTrap b (ClapTrap("Beta"));
+	FragTrap a;
+	FragTrap b = FragTrap("Beta");
 	
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	
-	b.attack("Beta");
+	b.attack("Gamma");
 	b.takeDamage(5);
 	b.beRepaired(2);
+	b.highFivesGuys();
 	std::cout << b << std::endl;
+	b.takeDamage(50);
 	
 	a = b;
 	std::cout << b << std::endl;
 	
-	ClapTrap c (a);
+	FragTrap c (a);
 	std::cout << c << std::endl;
-	b.takeDamage(50);
 	
 	return 0;
 }
