@@ -46,15 +46,17 @@ FragTrap::~FragTrap( void )
 }
 
 void	FragTrap::attack(const std::string& target)
-{
-	if ( _energy_points > 0 )
+{		
+	if ( _energy_points > 0 && _hit_points > 0 )
 	{
 		_energy_points--;
 		std::cout << "FragTrap " << _name << " attacks " << \
 target << ", causing " << _attack_damage << " points of damage!\n";
 	}
+	else if ( _hit_points == 0)
+		std::cerr << "FragTrap "<< _name << " cannot attack. Number of hit points is too low\n";
 	else
-		std::cerr << "Cannot attack. Number of energy points is too low\n";
+		std::cerr << "FragTrap "<< _name << " cannot attack. Number of energy points is too low\n";
 }
 
 void	FragTrap::highFivesGuys( void )

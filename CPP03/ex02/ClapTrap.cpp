@@ -88,14 +88,16 @@ std::ostream& operator<<( std::ostream& outs, const ClapTrap& ct )
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if ( _energy_points > 0 )
+	if ( _energy_points > 0 && _hit_points > 0 )
 	{
 		_energy_points--;
 		std::cout << "ClapTrap " << _name << " attacks " << \
 target << ", causing " << _attack_damage << " points of damage!\n";
 	}
+	else if ( _hit_points == 0)
+		std::cerr << "ClapTrap " << _name << " cannot attack. Number of hit points is too low\n";
 	else
-		std::cerr << "Cannot attack. Number of energy points is too low\n";
+		std::cerr << "ClapTrap " << _name << " cannot attack. Number of energy points is too low\n";
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -105,18 +107,25 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << _name << " took damage and lost " << amount << " hit points\n";
 		_hit_points -= amount;
 	}
+	else if  (_hit_points == 0)
+		std::cout << _name << " cannot take damage, already at 0 hit points\n";
 	else
-		std::cerr << "Cannot subtract attack damage from hit points. Number of hit points is too low\n";
+	{
+		_hit_points = 0;
+		std::cout << _name << " took damage and lost all hit points\n";
+	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if ( _energy_points > 0 )
+	if ( _energy_points > 0 && _hit_points > 0 )
 	{
 		_hit_points += amount;
 		_energy_points--;
 		std::cout << _name << " repaired and regained " << amount << " hit points\n";
 	}
+	else if ( _hit_points == 0)
+		std::cerr << "Cannot repair. Number of hit points is too low\n";
 	else
 		std::cerr << "Cannot repair. Number of energy points is too low\n";
 }
