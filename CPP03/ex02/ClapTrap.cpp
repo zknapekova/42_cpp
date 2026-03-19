@@ -118,11 +118,22 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	unsigned int	uint_max = std::numeric_limits<unsigned int>::max();
+	
 	if ( _energy_points > 0 && _hit_points > 0 )
 	{
-		_hit_points += amount;
-		_energy_points--;
-		std::cout << _name << " repaired and regained " << amount << " hit points\n";
+		if (amount > uint_max - _hit_points)
+        {
+            _hit_points = uint_max;
+            std::cout << _name << " repaired to maximum hit points\n";
+        }
+        else
+        {
+            _hit_points += amount;
+            std::cout << _name << " repaired and regained " << amount << " hit points\n";
+        }
+
+        _energy_points--;
 	}
 	else if ( _hit_points == 0)
 		std::cerr << "Cannot repair. Number of hit points is too low\n";
