@@ -17,7 +17,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap& operator=(const ScavTrap& orig);
 		~ScavTrap( void );
 		
-		void	attack(const std::string& target);
+		void	attack(const std::string& target); //override (in C++ 11)
 		void	guardGate();
 };
 

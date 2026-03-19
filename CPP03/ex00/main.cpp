@@ -16,12 +16,12 @@
 int main( void ) 
 {
 	ClapTrap a;
-	ClapTrap b (ClapTrap("Beta"));
-	
 	std::cout << a << std::endl;
-	std::cout << b << std::endl;
 	
-	b.attack("Beta");
+	ClapTrap b (ClapTrap("Beta"));
+	std::cout << b << std::endl;
+
+	a.attack("Beta");
 	b.takeDamage(5);
 	b.beRepaired(2);
 	std::cout << b << std::endl;
@@ -31,6 +31,8 @@ int main( void )
 	
 	ClapTrap c (a);
 	std::cout << c << std::endl;
+	
+	b.takeDamage(4294);
 	b.takeDamage(50);
 	
 	return 0;

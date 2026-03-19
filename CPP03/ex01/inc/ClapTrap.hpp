@@ -14,6 +14,7 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
+#include <limits>
 
 class ClapTrap
 {
@@ -32,8 +33,8 @@ class ClapTrap
 		ClapTrap( std::string name );
 		ClapTrap( const ClapTrap&  orig);
 		ClapTrap& operator=(const ClapTrap& orig);
-		~ClapTrap( void );
-		void	attack(const std::string& target);
+		virtual ~ClapTrap( void );
+		virtual void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		std::string 	getName( void ) const;
