@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/21 13:33:34 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/21 15:34:04 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap 
+class ScavTrap : virtual public ClapTrap 
 {
-	static const int	st_default_hit_points = 100;
-	static const int	st_default_energy_points = 50;
-	static const int	st_default_attack_damage = 20;
-	
+	protected:
+		static const int	st_default_hit_points = 100;
+		static const int	st_default_energy_points = 50;
+		static const int	st_default_attack_damage = 20;
 	
 	public:
 		ScavTrap( void );

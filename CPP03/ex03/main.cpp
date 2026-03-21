@@ -6,25 +6,26 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 14:40:01 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/14 14:40:01 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/21 15:57:32 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main( void ) 
 {
 	//default constructor:
-	FragTrap a;
+	DiamondTrap a;
 	std::cout <<  a << std::endl;
 	
+	a.whoAmI();
 	//parametrized constructor:
-	FragTrap b = FragTrap("Beta");
+	DiamondTrap b = DiamondTrap("Beta");
 	std::cout << b << std::endl;
 	b.attack("Gamma");
 	b.takeDamage(5);
 	b.beRepaired(2);
-	b.highFivesGuys();
+	b.whoAmI();
 	std::cout << b << std::endl;
 	
 	//amount is larger than number of hit points
@@ -35,16 +36,16 @@ int main( void )
 	std::cout << a << std::endl;
 	
 	//copy constructor
-	FragTrap c (a);
+	DiamondTrap c (a);
 	std::cout << c << std::endl;
 	
 	//attack method: slicing
-	ClapTrap ct;
+	DiamondTrap ct;
 	ct = b;
 	ct.attack("Gamma");
 	
 	//attack method: correct behavior
-	ClapTrap *p_ct = new FragTrap("Gamma");
+	DiamondTrap *p_ct = new DiamondTrap("Gamma");
 	p_ct->attack("Beta");
 	delete p_ct;
 	

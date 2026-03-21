@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/21 13:33:30 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/21 15:33:48 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap 
+class FragTrap : virtual public ClapTrap 
 {
-	static const int	ft_default_hit_points = 100;
-	static const int	ft_default_energy_points = 100;
-	static const int	ft_default_attack_damage = 30;
+	protected:
+		static const int	ft_default_hit_points = 100;
+		static const int	ft_default_energy_points = 100;
+		static const int	ft_default_attack_damage = 30;
 	
 	public:
 		FragTrap( void );
