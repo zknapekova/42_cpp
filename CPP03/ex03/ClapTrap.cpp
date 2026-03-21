@@ -13,7 +13,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap():
-	_name(""),
+	_name("None"),
 	_hit_points(default_hit_points),
 	_energy_points(default_energy_points),
 	_attack_damage(default_attack_damage)

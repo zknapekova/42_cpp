@@ -13,11 +13,11 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap( void ):
-	ClapTrap(),
+	ClapTrap("_clap_name"),
 	FragTrap(),
 	ScavTrap()
 {
-	_name = "";
+	_name = "None";
     _hit_points = FragTrap::ft_default_hit_points;
     _energy_points = ScavTrap::st_default_energy_points;
     _attack_damage = FragTrap::ft_default_attack_damage;
@@ -30,7 +30,6 @@ DiamondTrap::DiamondTrap( std::string name ):
 	ScavTrap(name)
 {
     _name = name;
-    std::cout << "name is " << _name << std::endl;
     _hit_points = FragTrap::ft_default_hit_points;
     _energy_points = ScavTrap::st_default_energy_points;
     _attack_damage = FragTrap::ft_default_attack_damage;
@@ -74,5 +73,4 @@ void	DiamondTrap::attack(const std::string& target)
 {
 	ScavTrap::attack(target);
 }
-
 
