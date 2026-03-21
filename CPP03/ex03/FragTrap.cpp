@@ -15,7 +15,6 @@
 FragTrap::FragTrap( void ):
 	ClapTrap()
 {
-	_name = "";
 	_hit_points = ft_default_hit_points;
 	_energy_points = ft_default_energy_points;
 	_attack_damage = ft_default_attack_damage;
@@ -26,7 +25,6 @@ FragTrap::FragTrap( void ):
 FragTrap::FragTrap( std::string name ):
 	ClapTrap(name)
 {
-	_name = name;
 	_hit_points = ft_default_hit_points;
 	_energy_points = ft_default_energy_points;
 	_attack_damage = ft_default_attack_damage;

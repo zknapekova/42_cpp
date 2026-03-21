@@ -29,7 +29,8 @@ DiamondTrap::DiamondTrap( std::string name ):
 	FragTrap(name),
 	ScavTrap(name)
 {
-	_name = name;
+    _name = name;
+    std::cout << "name is " << _name << std::endl;
     _hit_points = FragTrap::ft_default_hit_points;
     _energy_points = ScavTrap::st_default_energy_points;
     _attack_damage = FragTrap::ft_default_attack_damage;

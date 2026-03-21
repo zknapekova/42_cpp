@@ -19,6 +19,8 @@
 
 class DiamondTrap: public FragTrap, public ScavTrap
 {
+	std::string	_name;
+	
 	public:
 		DiamondTrap();
 		DiamondTrap( std::string name );

@@ -16,7 +16,6 @@
 ScavTrap::ScavTrap( void ):
 	ClapTrap()
 {
-	_name = "";
 	_hit_points = st_default_hit_points;
 	_energy_points = st_default_energy_points;
 	_attack_damage = st_default_attack_damage;
@@ -27,7 +26,6 @@ ScavTrap::ScavTrap( void ):
 ScavTrap::ScavTrap( std::string name ):
 	ClapTrap(name)
 {
-	_name = name;
 	_hit_points = st_default_hit_points;
 	_energy_points = st_default_energy_points;
 	_attack_damage = st_default_attack_damage;
