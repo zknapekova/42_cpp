@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:32:52 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/22 17:03:17 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/22 17:44:46 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ DiamondTrap::DiamondTrap( const DiamondTrap& orig ):
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& orig)
 {
+	std::cout << "DiamondTrap copy assignment operator called" << std::endl;
 	if (this != &orig)
-	{
 		ClapTrap::operator=(orig);
-		std::cout << "DiamondTrap copy assignment operator called" << std::endl;
-	}
 	return *this;	
 }
 
