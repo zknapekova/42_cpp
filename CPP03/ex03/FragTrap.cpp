@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:32:59 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/21 15:41:27 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:24:55 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ FragTrap::FragTrap( const FragTrap& orig ):
 
 FragTrap& FragTrap::operator=(const FragTrap& orig)
 {
-	std::cout << "FragTrap copy assignment operator called" << std::endl;
-	
-	_name = orig._name;
-	_hit_points = orig._hit_points;
-	_energy_points = orig._energy_points;
-	_attack_damage = orig._attack_damage;
-		
+	if (this != &orig)
+	{
+		ClapTrap::operator=(orig);
+		std::cout << "FragTrap copy assignment operator called" << std::endl;
+	}	
 	return *this;
 }
 

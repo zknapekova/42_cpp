@@ -6,14 +6,14 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:54:17 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/17 16:54:20 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:49:54 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap():
-	_name(""),
+	_name("None"),
 	_hit_points(default_hit_points),
 	_energy_points(default_energy_points),
 	_attack_damage(default_attack_damage)

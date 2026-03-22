@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:33:44 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/21 13:33:44 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:52:03 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 ScavTrap::ScavTrap( void ):
 	ClapTrap()
 {
-	_name = "";
 	_hit_points = st_default_hit_points;
 	_energy_points = st_default_energy_points;
 	_attack_damage = st_default_attack_damage;
@@ -27,7 +26,6 @@ ScavTrap::ScavTrap( void ):
 ScavTrap::ScavTrap( std::string name ):
 	ClapTrap(name)
 {
-	_name = name;
 	_hit_points = st_default_hit_points;
 	_energy_points = st_default_energy_points;
 	_attack_damage = st_default_attack_damage;
@@ -40,16 +38,13 @@ ScavTrap::ScavTrap( const ScavTrap& orig ):
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 }
 
-
 ScavTrap& ScavTrap::operator=(const ScavTrap& orig)
 {
-	std::cout << "ScavTrap copy assignment operator called" << std::endl;
-	
-	_name = orig._name;
-	_hit_points = orig._hit_points;
-	_energy_points = orig._energy_points;
-	_attack_damage = orig._attack_damage;
-		
+	if (this != &orig)
+	{
+		ClapTrap::operator=(orig);
+		std::cout << "ScavTrap copy assignment operator called" << std::endl;
+	}	
 	return *this;
 }
 
