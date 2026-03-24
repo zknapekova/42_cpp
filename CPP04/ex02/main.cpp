@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -16,7 +16,7 @@ static void	test_comp(bool res, bool expected, std::string name)
 
 int	main( void )
 {
-	Animal* arr[10];
+	AAnimal* arr[10];
 	size_t i;
 	
 	for (i = 0; i < 5; i++)
@@ -67,6 +67,8 @@ int	main( void )
 
 	delete cp_1;
 	delete cp_2;
-			
+	
+	//AAnimal abstract_cls_inst; --> not allowed
+	
 	return 0;
 }
