@@ -13,7 +13,7 @@ Animal::Animal(std::string type): _type(type)
 
 Animal::~Animal()
 {
-	std::cout << "Animal destructor constructor" << std::endl;
+	std::cout << "Animal destructor" << std::endl;
 }
 
 Animal::Animal(const Animal& orig):

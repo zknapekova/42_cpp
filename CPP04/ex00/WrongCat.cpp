@@ -1,14 +1,14 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void)
+WrongCat::WrongCat(void):
+	WrongAnimal("WrongCat")
 {
 	std::cout << "WrongCat default constructor" << std::endl;
-	_type = "WrongCat";
 }
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat destructor constructor" << std::endl;
+	std::cout << "WrongCat destructor" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& orig):

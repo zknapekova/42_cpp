@@ -13,7 +13,7 @@ WrongAnimal::WrongAnimal(std::string type): _type(type)
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "WrongAnimal destructor constructor" << std::endl;
+	std::cout << "WrongAnimal destructor" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& orig):

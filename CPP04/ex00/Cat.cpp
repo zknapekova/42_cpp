@@ -1,14 +1,14 @@
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(void):
+	Animal("Cat")
 {
 	std::cout << "Cat default constructor" << std::endl;
-	_type = "Cat";
 }
 
 Cat::~Cat()
 {
-	std::cout << "Cat destructor constructor" << std::endl;
+	std::cout << "Cat destructor" << std::endl;
 }
 
 Cat::Cat(const Cat& orig):

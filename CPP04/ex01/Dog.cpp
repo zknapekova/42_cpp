@@ -1,9 +1,9 @@
 #include "Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void):
+	Animal("Dog")
 {
 	std::cout << "Dog default constructor" << std::endl;
-	_type = "Dog";
 	_brain = new(std::nothrow) Brain;
 	if (!_brain)
     	std::cerr << "Brain allocation failed!" << std::endl;
@@ -11,7 +11,7 @@ Dog::Dog(void)
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor constructor" << std::endl;
+	std::cout << "Dog destructor" << std::endl;
 	delete _brain;
 }
 

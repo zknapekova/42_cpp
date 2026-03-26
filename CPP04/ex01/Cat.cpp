@@ -1,9 +1,9 @@
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(void):
+	Animal("Cat")
 {
 	std::cout << "Cat default constructor" << std::endl;
-	_type = "Cat";
 	_brain = new(std::nothrow) Brain;
 	if (!_brain)
     	std::cerr << "Brain allocation failed!" << std::endl;
@@ -11,7 +11,7 @@ Cat::Cat(void)
 
 Cat::~Cat()
 {
-	std::cout << "Cat destructor constructor" << std::endl;
+	std::cout << "Cat destructor" << std::endl;
 	delete _brain;
 }
 

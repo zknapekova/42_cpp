@@ -1,14 +1,14 @@
 #include "Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void): 
+	Animal("Dog")
 {
 	std::cout << "Dog default constructor" << std::endl;
-	_type = "Dog";
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor constructor" << std::endl;
+	std::cout << "Dog destructor" << std::endl;
 }
 
 Dog::Dog(const Dog& orig):

@@ -13,7 +13,7 @@ AAnimal::AAnimal(std::string type): _type(type)
 
 AAnimal::~AAnimal()
 {
-	std::cout << "AAnimal destructor constructor" << std::endl;
+	std::cout << "AAnimal destructor" << std::endl;
 }
 
 AAnimal::AAnimal(const AAnimal& orig):
