@@ -3,7 +3,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = ./inc/
 
-SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp 
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
 
 OBJS = $(addprefix object_files/, $(SRCS:.cpp=.o))
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/28 15:51:23 by zuknapek          #+#    #+#             */
+/*   Updated: 2026/03/28 15:58:41 by zuknapek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AMateria.hpp"
 
 
@@ -33,7 +45,6 @@ AMateria& AMateria::operator=(const AMateria& orig)
 
 	return *this;
 }
-
 
 std::string const & AMateria::getType() const
 {
