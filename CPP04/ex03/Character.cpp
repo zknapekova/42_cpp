@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 15:51:16 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/29 19:13:01 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:43:31 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void Character::equip(AMateria* m)
 	{
 		if (!_inventory[i])
 		{
-			_inventory[i] = m;
+			_inventory[i] = m->clone();
 			std::cout << "AMateria of type " << m->getType() << " was placed on slot " << i << std::endl;
 			return ;
 		}
@@ -98,6 +98,8 @@ void Character::unequip(int idx)
 			_addMateriaToGC(_inventory[idx]);
 			_inventory[idx] = NULL;
 		}
+		else
+			std::cout << "Index " << idx << " already unequipped\n";
 	}
 	else
 		std::cerr << "ERROR: (Character::unequip): Wrong index" << std::endl;

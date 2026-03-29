@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 16:11:06 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/29 19:14:45 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 20:11:23 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void MateriaSource::learnMateria(AMateria* m)
 	{
 		if (_sources[i] == NULL)
 		{
-			_sources[i] = m;
+			_sources[i] = m->clone();
 			std::cout << "AMateria with type " <<  _sources[i]->getType() << " was placed on slot " << i << " in MateriaSource\n";
 			return ;
 		}
 	}
-	std::cout << "MateriaSource  is full\n";
+	std::cout << "MateriaSource is full\n";
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
