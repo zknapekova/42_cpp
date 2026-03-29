@@ -39,6 +39,12 @@ Cure& Cure::operator=(const Cure &orig)
 
 Cure* Cure::clone() const
 {
+	std::cout << "Cure clone method\n";
 	Cure *cloned = new Cure(*this);	
 	return cloned;
+}
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds " << std::endl;
 }

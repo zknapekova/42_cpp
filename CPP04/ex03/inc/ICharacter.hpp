@@ -2,6 +2,8 @@
 #define ICHARACTER_HPP
 
 
+class AMateria;
+
 class ICharacter
 {
 	public:

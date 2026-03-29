@@ -39,7 +39,13 @@ Ice& Ice::operator=(const Ice &orig)
 
 Ice* Ice::clone() const
 {
+	std::cout << "Ice clone method\n";
 	Ice *cloned = new Ice(*this);	
 	return cloned;
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
 }
 

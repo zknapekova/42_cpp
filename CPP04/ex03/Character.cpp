@@ -89,19 +89,36 @@ void Character::equip(AMateria* m)
 		}
 	}
 	std::cout << "Inventory is full\n";
-
 }
+
 void Character::unequip(int idx)
 {
-	//TODO
-	(void)idx;
+	if (idx >= 0 && idx < 4)
+	{
+		if (_inventory[idx])
+			_inventory[idx] = NULL;
+	}
+	else
+		std::cerr << "ERROR: (Character::unequip): Wrong index" << std::endl;
+	//TODO: add to the floor
 
 }
+
 void Character::use(int idx, ICharacter& target)
 {
-	//TODO
-	(void)idx;
-	(void)target;
+	if (idx >= 0 && idx < 4)
+		_inventory[idx] -> use(target);
+	else
+		std::cerr << "ERROR: (Character::use): Wrong index" << std::endl;
 }
+
+AMateria* Character::getAMateria(int idx)
+{
+	if (idx >= 0 && idx < 4)
+		return _inventory[idx];
+	return NULL;
+}
+
+
 
 
