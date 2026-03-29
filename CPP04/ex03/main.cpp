@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 15:51:38 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/29 18:05:17 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:11:14 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int	main( void )
 	bob->equip(ice_ex);
 	bob->equip(cure_ex);
 	bob->equip(ice_clone);
+	bob->unequip(0);
+	bob->unequip(1);
+	bob->unequip(2);
+	bob->unequip(3);
 	bob->equip(cure_clone);
 		
 	Character orig = Character("orig");
@@ -81,7 +85,6 @@ int	main( void )
 	delete bob;
 	delete me;
 	delete src;
-	delete cure_clone;
 	
 	return 0;
 }

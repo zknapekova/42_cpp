@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 15:51:30 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/28 15:51:30 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:13:40 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 Cure::Cure():
 	AMateria("cure")
-{
-	std::cout << "Cure default constructor\n";
-}
+{ }
 
 Cure::~Cure()
-{
-	std::cout << "Cure destructor\n";
-}
+{ }
 
 Cure::Cure(const Cure &orig):
 	AMateria(orig)
-{
-	std::cout << "Cure copy constructor\n";
-}
+{ }
 
 Cure& Cure::operator=(const Cure &orig)
 {
-	std::cout << "Cure assignment operator\n";
 	if (this != &orig)
 		AMateria::operator=(orig);
 	return *this;
@@ -39,7 +32,6 @@ Cure& Cure::operator=(const Cure &orig)
 
 Cure* Cure::clone() const
 {
-	std::cout << "Cure clone method\n";
 	Cure *cloned = new Cure(*this);	
 	return cloned;
 }

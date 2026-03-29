@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 16:11:06 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/29 17:17:07 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:14:45 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout << "MateriaSource default constructor\n";
 	for (size_t i = 0; i < 4; i++)
     	_sources[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "MateriaSource destructor\n";
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (_sources[i])
@@ -31,7 +29,6 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource( const MateriaSource& orig)
 {
-	std::cout << "Materia copy constructor\n";
 	for (size_t i = 0; i < 4; i++)
     	_sources[i] = NULL;
 		
@@ -44,7 +41,6 @@ MateriaSource::MateriaSource( const MateriaSource& orig)
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& orig)
 {
-	std::cout << "Materia copy assignment operator\n";
 	if (this != &orig)
 	{
 		for (size_t i = 0; i < 4; i++)
@@ -68,7 +64,6 @@ void MateriaSource::learnMateria(AMateria* m)
 		std::cerr << "ERROR: (MateriaSource::learnMateria) invalid input\n";
 		return ;
 	}
-	std::cout << "Materia learnMateria function\n";
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (_sources[i] == NULL)
@@ -97,7 +92,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 
 AMateria* MateriaSource::getAMateria(int idx)
 {
-	if (idx >= 0 && idx < 4)
+	if ((idx >= 0 && idx < 4) && _sources[idx])
 		return _sources[idx]->clone();
 	return NULL;
 }

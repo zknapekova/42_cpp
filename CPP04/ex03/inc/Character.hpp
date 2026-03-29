@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 18:08:28 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/28 18:32:29 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 18:37:06 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,22 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
+struct	MateriaGarbageCollector {
+	AMateria 					*current;
+	MateriaGarbageCollector 	*next;
+};
+
+
 class Character: public ICharacter
 {
-	AMateria *_inventory[4];
-	std::string	_name;
+	private:
+		AMateria *_inventory[4];
+		MateriaGarbageCollector* _head;
+		MateriaGarbageCollector* _tail;
+		std::string	_name;
+		
+		void	_addMateriaToGC(AMateria* m);
+		void	_emptyGC();
 	
 	public:
 		Character();
