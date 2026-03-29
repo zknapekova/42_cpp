@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 15:51:38 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/28 18:25:20 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 18:05:17 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 
 static void	test_comp(bool res, bool expected, std::string name)
 {
@@ -46,16 +47,41 @@ int	main( void )
 	bob->equip(cure_ex);
 	bob->equip(ice_clone);
 	bob->equip(cure_clone);
-	
+		
 	Character orig = Character("orig");
-	orig.equip(ice_e);
+	orig.equip(new Ice());
 	Character copy(orig);
 	
-	test_comp(copy.getAMateria(0) == orig.getAMateria(0), false, "Test Character copy consctructor (deep copy): ");
+	AMateria *test_cp1 = copy.getAMateria(0);
+	AMateria *test_cp2 = orig.getAMateria(0);
+	test_comp(test_cp1 == test_cp2, false, "Test Character copy constructor (deep copy)");
+	delete test_cp1;
 	
-	Character assign = Character("assign");
+	Character assign(orig);
 	assign = orig;
-	test_comp(assign.getAMateria(0) == orig.getAMateria(0), false, "Test Character assignment operator (deep copy): ");
-
+	AMateria *test_cp3 = assign.getAMateria(0);
+	test_comp(test_cp3 == test_cp2, false, "Test Character assignment operator (deep copy)");
+	delete test_cp2;
+	delete test_cp3;
+	
+	//Subject's main
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob2 = new Character("bob");
+	me->use(0, *bob2);
+	me->use(1, *bob2);
+	delete bob2;
+	delete bob;
+	delete me;
+	delete src;
+	delete cure_clone;
+	
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: zuknapek <zuknapek@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 15:51:16 by zuknapek          #+#    #+#             */
-/*   Updated: 2026/03/28 18:30:37 by zuknapek         ###   ########.fr       */
+/*   Updated: 2026/03/29 17:26:21 by zuknapek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ Character::Character(std::string name): _name(name)
 
 Character::~Character()
 {
-	std::cout << "Character destructor\n";
+	std::cout << "Character destructor with name " << _name << std::endl;
 	for (size_t i = 0; i < 4; i++)
 	{
     	if (_inventory[i])
+		{
     		delete _inventory[i];
+			_inventory[i] = NULL;
+		}
     }
 }
 
@@ -77,8 +80,6 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	std::cout << "Character::equip function called\n";
-	
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (!_inventory[i])
@@ -115,7 +116,7 @@ void Character::use(int idx, ICharacter& target)
 AMateria* Character::getAMateria(int idx)
 {
 	if (idx >= 0 && idx < 4)
-		return _inventory[idx];
+		return _inventory[idx]->clone();
 	return NULL;
 }
 
