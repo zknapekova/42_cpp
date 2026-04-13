@@ -18,6 +18,13 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& orig);
 		Bureaucrat& operator=(const Bureaucrat& orig);
 
+        std::string get_name() const ;
+        int         get_grade() const;
+
+        void    increment_grade();
+        void    decrement_grade();
+
+
         class GradeTooHighException: public std::exception
         {   
             public:
@@ -31,6 +38,7 @@ class Bureaucrat
         };
 };
 
+std::ostream &operator<<(std::ostream &o, const Bureaucrat &b);
 
 
 #endif
