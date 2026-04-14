@@ -8,8 +8,8 @@ class Bureaucrat
 {
     const std::string   _name;
     int                 _grade;
-    static const int    _max_grade = 150;
-    static const int    _min_grade = 1;
+    static const int    _highest_grade = 1;
+    static const int    _lowest_grade = 150;
     
     public:
         Bureaucrat();
@@ -18,7 +18,7 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& orig);
 		Bureaucrat& operator=(const Bureaucrat& orig);
 
-        std::string get_name() const ;
+        const std::string get_name() const ;
         int         get_grade() const;
 
         void    increment_grade();
