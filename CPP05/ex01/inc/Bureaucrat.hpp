@@ -8,8 +8,6 @@ class Bureaucrat
 {
     const std::string   _name;
     int                 _grade;
-    static const int    _highest_grade = 1;
-    static const int    _lowest_grade = 150;
     
     public:
         Bureaucrat();
@@ -23,6 +21,9 @@ class Bureaucrat
 
         void    increment_grade();
         void    decrement_grade();
+
+        static const int    _highest_grade = 1;
+        static const int    _lowest_grade = 150;
 
 
         class GradeTooHighException: public std::exception
