@@ -5,6 +5,8 @@
 #include <string>
 #include <exception>
 
+class Bureaucrat;
+
 class Form
 {
     const std::string   _name;
@@ -24,6 +26,7 @@ class Form
         int get_grade_to_exec() const;
         bool get_is_signed() const;
 
+        void    beSigned(Bureaucrat& b);
 
         class GradeTooHighException: public std::exception
         {   

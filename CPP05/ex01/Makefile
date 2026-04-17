@@ -1,5 +1,5 @@
-COMP = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = ./inc/
 
@@ -12,11 +12,11 @@ NAME = ex01
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(COMP) $(FLAGS) -I$(HEADERS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) -I$(HEADERS) $(OBJS) -o $@
 
 object_files/%.o: %.cpp
 	@mkdir -p object_files
-	$(COMP) $(FLAGS) -I$(HEADERS) -c $^ -o $@
+	$(CXX) $(CXXFLAGS) -I$(HEADERS) -c $^ -o $@
 
 # Clean object files
 clean:

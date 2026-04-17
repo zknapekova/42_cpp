@@ -100,3 +100,11 @@ std::ostream &operator<<(std::ostream &o, const Form &f)
     o << "Form " << f.get_name() << ", is_signed: " << f.get_is_signed() << ", grade_to_sign: " << f.get_grade_to_sign() << ", grade_to_exec: " << f.get_grade_to_exec();
     return o;
 }
+
+void    Form::beSigned(Bureaucrat& b)
+{
+    if (b.get_grade() <= _grade_to_sign)
+        _is_signed = true;
+    else
+        throw GradeTooLowException("Bureaucrat's grade is too low for signing");
+}

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <exception>
 
+class Form;
+
 class Bureaucrat
 {
     const std::string   _name;
@@ -16,8 +18,9 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& orig);
 		Bureaucrat& operator=(const Bureaucrat& orig);
 
-        const std::string& get_name() const ;
-        int         get_grade() const;
+        const std::string&  get_name() const ;
+        int                 get_grade() const;
+        void                signForm(Form& f);
 
         void    increment_grade();
         void    decrement_grade();
