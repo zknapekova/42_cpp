@@ -44,23 +44,23 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return "GradeTooLowException: The grade is too low.";
 }
 
-const std::string& Bureaucrat::get_name() const
+const std::string& Bureaucrat::getName() const
 {
     return _name;
 }
 
-int Bureaucrat::get_grade() const
+int Bureaucrat::getGrade() const
 {
     return _grade;
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &b)
 {
-    o << b.get_name() << ", bureaucrat grade " << b.get_grade();
+    o << b.getName() << ", bureaucrat grade " << b.getGrade();
     return o;
 }
 
-void    Bureaucrat::increment_grade()
+void    Bureaucrat::incrementGrade()
 {
     if (_grade <= _highest_grade)
         throw GradeTooHighException();
@@ -68,7 +68,7 @@ void    Bureaucrat::increment_grade()
 }
 
 
-void    Bureaucrat::decrement_grade()
+void    Bureaucrat::decrementGrade()
 {
     if (_grade >= _lowest_grade)
         throw GradeTooLowException();
@@ -78,24 +78,24 @@ void    Bureaucrat::decrement_grade()
 void    Bureaucrat::signForm(Form& f)
 {
     
-    if (f.get_is_signed())
+    if (f.getIsSigned())
     {
-        std::cerr << get_name() << " couldn't sign " << f.get_name() << " because it's been already signed.\n";
+        std::cerr << this->getName() << " couldn't sign " << f.getName() << " because it's been already signed.\n";
         return ;
     }
     try
     {
         f.beSigned(*this);
-        std::cout << get_name() << " signed " << f.get_name() << std::endl;
+        std::cout << this->getName() << " signed " << f.getName() << std::endl;
     }
     catch(const Form::GradeTooLowException& e)
     {
-        std::cerr << get_name() << " couldn't sign " << f.get_name() << " because: " << e.what() << std::endl;
+        std::cerr << this->getName() << " couldn't sign " << f.getName() << " because: " << e.what() << std::endl;
         throw;
     }
     catch(...)
     {
-        std::cerr << get_name() << " couldn't sign " << f.get_name() << " because of unexpected error\n";
+        std::cerr << this->getName() << " couldn't sign " << f.getName() << " because of unexpected error\n";
         throw;
     }
 }

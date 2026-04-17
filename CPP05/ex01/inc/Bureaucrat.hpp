@@ -18,12 +18,12 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& orig);
 		Bureaucrat& operator=(const Bureaucrat& orig);
 
-        const std::string&  get_name() const ;
-        int                 get_grade() const;
+        const std::string&  getName() const ;
+        int                 getGrade() const;
         void                signForm(Form& f);
 
-        void    increment_grade();
-        void    decrement_grade();
+        void    incrementGrade();
+        void    decrementGrade();
 
         static const int    _highest_grade = 1;
         static const int    _lowest_grade = 150;

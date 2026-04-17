@@ -86,9 +86,9 @@ int main()
     {
         Bureaucrat b5(Bureaucrat("alpha", 2));
         std::cout << b5 << std::endl;
-        b5.increment_grade();
+        b5.incrementGrade();
         std::cout << b5 << std::endl;
-        b5.increment_grade();
+        b5.incrementGrade();
     }
     catch(const std::exception& e)
     {
@@ -99,9 +99,9 @@ int main()
     {
         Bureaucrat b5(Bureaucrat("beta", 149));
         std::cout << b5 << std::endl;
-        b5.decrement_grade();
+        b5.decrementGrade();
         std::cout << b5 << std::endl;
-        b5.decrement_grade();
+        b5.decrementGrade();
     }
     catch(const std::exception& e)
     {

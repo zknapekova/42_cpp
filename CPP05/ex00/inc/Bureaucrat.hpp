@@ -18,11 +18,11 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& orig);
 		Bureaucrat& operator=(const Bureaucrat& orig);
 
-        const std::string& get_name() const ;
-        int         get_grade() const;
+        const std::string& getName() const ;
+        int         getGrade() const;
 
-        void    increment_grade();
-        void    decrement_grade();
+        void    incrementGrade();
+        void    decrementGrade();
 
 
         class GradeTooHighException: public std::exception

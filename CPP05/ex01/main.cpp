@@ -31,7 +31,7 @@ int main()
     {
         Bureaucrat b1("B1", 1);
         b1.signForm(f1);
-        std::cout << "_is_signed: " << f1.get_is_signed() << std::endl;
+        std::cout << "_is_signed: " << f1.getIsSigned() << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -48,7 +48,7 @@ int main()
     catch(const std::exception& e)
     {
         std::cout << "Exception caught" << std::endl;
-        std::cout << "_is_signed: " << f4.get_is_signed() << std::endl;
+        std::cout << "_is_signed: " << f4.getIsSigned() << std::endl;
     }
 
 }

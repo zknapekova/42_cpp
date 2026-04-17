@@ -75,35 +75,35 @@ Form& Form::operator=(const Form& orig)
     return *this;
 }
 
-const std::string& Form::get_name() const
+const std::string& Form::getName() const
 {
     return _name;
 }
 
-int Form::get_grade_to_sign() const
+int Form::getGradeToSign() const
 {
     return _grade_to_sign;
 }
 
-int Form::get_grade_to_exec() const
+int Form::getGradeToExec() const
 {
     return _grade_to_exec;
 }
 
-bool Form::get_is_signed() const
+bool Form::getIsSigned() const
 {
     return _is_signed;
 }
 
 std::ostream &operator<<(std::ostream &o, const Form &f)
 {
-    o << "Form " << f.get_name() << ", is_signed: " << f.get_is_signed() << ", grade_to_sign: " << f.get_grade_to_sign() << ", grade_to_exec: " << f.get_grade_to_exec();
+    o << "Form " << f.getName() << ", is_signed: " << f.getIsSigned() << ", grade_to_sign: " << f.getGradeToSign() << ", grade_to_exec: " << f.getGradeToExec();
     return o;
 }
 
 void    Form::beSigned(Bureaucrat& b)
 {
-    if (b.get_grade() <= _grade_to_sign)
+    if (b.getGrade() <= _grade_to_sign)
         _is_signed = true;
     else
         throw GradeTooLowException("Bureaucrat's grade is too low for signing");

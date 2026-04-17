@@ -21,10 +21,10 @@ class Form
         Form(const Form& orig);
         Form& operator=(const Form& orig);
 
-        const std::string& get_name() const;
-        int get_grade_to_sign() const ;
-        int get_grade_to_exec() const;
-        bool get_is_signed() const;
+        const std::string& getName() const;
+        int getGradeToSign() const ;
+        int getGradeToExec() const;
+        bool getIsSigned() const;
 
         void    beSigned(Bureaucrat& b);
 
