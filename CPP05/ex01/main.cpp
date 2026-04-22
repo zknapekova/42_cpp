@@ -47,7 +47,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cout << "Exception caught" << std::endl;
+        std::cout << "Propagated exception caught" << std::endl;
         std::cout << "_is_signed: " << f4.getIsSigned() << std::endl;
     }
 
