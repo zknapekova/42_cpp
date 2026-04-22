@@ -36,6 +36,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const& executor) const
     }
     catch(const std::exception& e)
     {
+        std::cerr << "ShrubberyCreationForm check failed\n";
         throw ;
     }
     

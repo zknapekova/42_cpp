@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADERS = ./inc/
 
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJS = $(addprefix object_files/, $(SRCS:.cpp=.o))
 

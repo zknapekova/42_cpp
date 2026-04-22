@@ -1,6 +1,7 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -39,7 +40,7 @@ int main()
     }
     catch (...)
     {
-        std::cerr << "Something went wrong when creating test ShrubberyCreationForm\n";
+        std::cerr << "Something went wrong when testing ShrubberyCreationForm\n";
         delete b;
         delete b2;
         return 0;
@@ -81,6 +82,46 @@ int main()
     catch (...)
     {
         std::cerr << "Something went wrong when creating test ShrubberyCreationForm\n";
+        delete b;
+        delete b2;
+        return 0;
+    }
+
+    try
+    {
+        RobotomyRequestForm rrf1("RRF1");
+        std::cout << rrf1 << std::endl;
+        b->signForm(rrf1);
+
+        rrf1.execute(*b);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch (...)
+    {
+        std::cerr << "Something went wrong when testing RobotomyRequestForm\n";
+        delete b;
+        delete b2;
+        return 0;
+    }
+
+    try
+    {
+        PresidentialPardonForm ppf1("PPF1");
+        std::cout << ppf1 << std::endl;
+        b->signForm(ppf1);
+
+        ppf1.execute(*b);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch (...)
+    {
+        std::cerr << "Something went wrong when testing PresidentialPardonForm\n";
         delete b;
         delete b2;
         return 0;
