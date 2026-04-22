@@ -108,3 +108,14 @@ void    AForm::beSigned(Bureaucrat& b)
     else
         throw GradeTooLowException("Bureaucrat's grade is too low for signing");
 }
+
+void    AForm::checkBeforeExec(Bureaucrat const& executor, std::string _target, int req_exec_grade) const
+{
+    if (!AForm::getIsSigned())
+        throw std::invalid_argument("The form is not signed");
+    
+    if (executor.getGrade() > req_exec_grade)
+        throw AForm::GradeTooLowException("The Bureaucrat's grade is too low for signing " +_target );
+
+    return ;
+}

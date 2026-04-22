@@ -29,24 +29,27 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void    ShrubberyCreationForm::execute(Bureaucrat const& executor) const
-{
-    if (!AForm::getIsSigned())
+{    
+    try
     {
-        std::cout << "The form is not signed\n";
-        return ;
-    }  
-    
-    if (executor.getGrade() > _req_exec_grade)
+        checkBeforeExec(executor, _target, _req_exec_grade);
+    }
+    catch(const std::exception& e)
     {
-        AForm::GradeTooLowException("The Bureaucrat's grade is too low for signing ShrubberyCreationForm");
-        return ;
+        throw ;
     }
     
     std::string filename = _target + "_shrubbery";
     std::ofstream file(filename.c_str());
-    //TODO: add check
+    if (!file.is_open())
+    {
+        std::cerr << "File " << filename << "failed to open\n";
+        return ;
+    }
     file << "  *\n";
     file << " ***\n";
     file << "*****\n";
-    file << "  ##\n";
+    file << "  #\n";
+
+    file.close();
 }

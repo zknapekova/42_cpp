@@ -28,6 +28,7 @@ class AForm
 
         void            beSigned(Bureaucrat& b);
         virtual void    execute(Bureaucrat const& executor) const = 0;
+        void            checkBeforeExec(Bureaucrat const& executor, std::string target, int req_exec_grade) const;
 
         class GradeTooHighException: public std::exception
         {   
